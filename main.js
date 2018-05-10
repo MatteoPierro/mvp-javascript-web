@@ -1,16 +1,12 @@
 const $ = require('jquery');
-const HelloWorldPresenter = require('./src/helloworld.presenter').HelloWorldPresenter
+const HelloWorldPresenter = require('./src/helloworld.presenter').HelloWorldPresenter;
+const HelloWorldView = require('./src/helloworld.view').HelloWorldView;
 
-
-let view = {
-    showMessage: function (message) {
-        $('h1').text(message);
-    }
-};
-let helloWorldPresenter = new HelloWorldPresenter(view);
+let view = new HelloWorldView();
+let presenter = new HelloWorldPresenter(view);
 
 let greetingsCallback = function () {
     let name = $('#name').val();
-    helloWorldPresenter.greetings(name);
+    presenter.greetings(name);
 };
 $('#greetings').click(greetingsCallback);
