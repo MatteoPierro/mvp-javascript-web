@@ -7,5 +7,10 @@ let view = {
         $('h1').text(message);
     }
 };
-let helloworld = new HelloWorldPresenter(view);
-helloworld.greetings("World");
+let helloWorldPresenter = new HelloWorldPresenter(view);
+
+let greetingsCallback = function () {
+    let name = $('#name').val();
+    helloWorldPresenter.greetings(name);
+};
+$('#greetings').click(greetingsCallback);
