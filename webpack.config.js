@@ -1,10 +1,18 @@
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './main.js'
+    app: './src/js/main.js'
   },
   output: {
     filename: 'helloworld.js'
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+        hash: true,
+        template: './src/index.html',
+        filename: 'index.html'
+    })
+  ]
 };

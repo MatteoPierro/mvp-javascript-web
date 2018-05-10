@@ -1,7 +1,7 @@
 const assert = require('chai').assert;
 const sinon = require('sinon');
-const HelloWorldPresenter = require('../src/helloworld.presenter').HelloWorldPresenter;
-const HelloWorldView = require('../src/helloworld.view').HelloWorldView;
+const HelloWorldPresenter = require('../../src/js/helloworld.presenter').HelloWorldPresenter;
+const HelloWorldView = require('../../src/js/helloworld.view').HelloWorldView;
 
 describe('HelloWorldPresenter', function () {
     var view;
