@@ -4,25 +4,32 @@ const HelloWorldPresenter = require('../src/helloworld.presenter').HelloWorldPre
 const HelloWorldView = require('../src/helloworld.view').HelloWorldView;
 
 describe('HelloWorldPresenter', function () {
-    it('should greet with a name when specified', function () {
-        let view = new HelloWorldView();
-        let presenter = new HelloWorldPresenter(view);
+    var view;
+    var presenter;
 
-        let viewMock = sinon.mock(view);
-        viewMock.expects('showMessage').withArgs('Hello pluto');
-        presenter.greetings('pluto');
+    beforeEach(function () {
+        view = new HelloWorldView();
+        presenter = new HelloWorldPresenter(view);
+    });
+
+    it('should greet with a name when specified', function () {
+        const name = 'pluto';
+        let viewMock = expectMessage('Hello ' + name);
+        presenter.greetings(name);
 
         viewMock.verify();
     });
 
     it('should greet the world then a name is not specified', function () {
-        let view = new HelloWorldView();
-        let presenter = new HelloWorldPresenter(view);
-
-        let viewMock = sinon.mock(view);
-        viewMock.expects('showMessage').withArgs('Hello World');
+        let viewMock = expectMessage('Hello World');
         presenter.greetings();
 
         viewMock.verify();
     });
+
+    function expectMessage(message) {
+        let viewMock = sinon.mock(view);
+        viewMock.expects('showMessage').withArgs(message);
+        return viewMock;
+    }
 });
