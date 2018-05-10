@@ -6,11 +6,5 @@ module.exports = {
   },
   output: {
     filename: 'helloworld.js'
-  },
-  plugins: [
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery'
-    })
-  ]
+  }
 };
