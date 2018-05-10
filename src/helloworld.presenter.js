@@ -1,10 +1,12 @@
 const HelloWorldPresenter = function (view) {
     this.greetings = function (name) {
-        if (name === undefined || name === '') {
-            view.showMessage("Hello World");
-            return;
-        }
-        view.showMessage("Hello " + name);
+        view.showMessage("Hello " + subject(name));
+    }
+
+    function subject(name) {
+        return name === undefined || name === ''
+            ? 'World'
+            : name;
     }
 }
 
